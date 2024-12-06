@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .recommendation {
+            background-color: #e9f7fd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .recommendation h3 {
+            color: #007bff;
+            margin: 0;
+        }
+
+        .recommendation p {
+            color: #555;
+            margin: 5px 0;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Movie Recommendations</h1>
+
+        {% if recommendations %}
+            <div>
+                {% for movie in recommendations %}
+                    <div class="recommendation">
+                        <h3>{{ movie.title }}</h3>
+                        <p><strong>Genre:</strong> {{ movie.genre }}</p>
+                        <p><strong>Rating:</strong> {{ movie.rating }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="error">No recommendations available for the selected genre.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
